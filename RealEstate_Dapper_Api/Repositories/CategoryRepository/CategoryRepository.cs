@@ -50,7 +50,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
         {
             string query = "Select * From Category Where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
-            parameters.Add("@CategoryID",id);
+            parameters.Add("@CategoryID", id);
             using (var connection = _context.CreateConnection())
             {
                 var value = await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDto>(query, parameters);
@@ -62,9 +62,9 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
         {
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
-            parameters.Add("@categoryName",updateCategoryDto.CategoryName);
-            parameters.Add("@categoryStatus",updateCategoryDto.CategoryStatus);
-            parameters.Add("@categoryID",updateCategoryDto.CategoryID);
+            parameters.Add("@categoryName", updateCategoryDto.CategoryName);
+            parameters.Add("@categoryStatus", updateCategoryDto.CategoryStatus);
+            parameters.Add("@categoryID", updateCategoryDto.CategoryID);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
